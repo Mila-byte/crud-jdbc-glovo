@@ -9,7 +9,7 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.Date;
 
-@Table("order")
+@Table("orders")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

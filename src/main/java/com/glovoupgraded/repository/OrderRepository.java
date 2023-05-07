@@ -12,11 +12,11 @@ import java.util.List;
 @Repository
 public interface OrderRepository extends CrudRepository<OrderEntity, Integer> {
     List<OrderEntity> findAll();
-
-    @Query(value = "insert into order_product (order_id, product_id) select :orderId, product.id from product where product.id IN (:productIds) returning product_id")
+    @Modifying
+    @Query("INSERT INTO \"order_products\" (order_id, product_id) SELECT :orderId, id FROM \"products\" WHERE id IN (:productIds)")
     List<Integer> addProductsToOrder(@Param("orderId") int orderId, @Param("productIds") List<Integer> productIds);
 
     @Modifying
-    @Query("DELETE FROM order_product WHERE order_id = :orderId AND product_id = :id")
+    @Query("DELETE FROM \"order_products\" WHERE order_id = :orderId AND product_id = :id")
     void deleteProductFromOrder(@Param("orderId") int orderId, @Param("id") int productId);
 }

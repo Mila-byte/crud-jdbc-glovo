@@ -12,7 +12,7 @@ public interface ProductRepository extends CrudRepository<ProductEntity, Integer
     List<ProductEntity> findAllByIdIn(List<Integer> productIds);
     List<ProductEntity> findAll();
 
-    @Query("select product.* from product inner join order_product on product.id = order_product.product_id where order_product.order_id = :orderId")
+    @Query("select \"products\".* from \"products\" inner join \"order_products\" on \"products\".id = \"order_products\".product_id where \"order_products\".order_id = :orderId")
     List<ProductEntity> findByOrderId(int orderId);
 
 }
