@@ -21,3 +21,9 @@ CREATE TABLE "order_products"
     FOREIGN KEY (order_id) REFERENCES "orders" (order_id) ON DELETE CASCADE,
     FOREIGN KEY (product_id) REFERENCES "products" (id) ON DELETE CASCADE
 );
+
+CREATE TABLE "users" (
+                        id INT AUTO_INCREMENT PRIMARY KEY,
+                        username VARCHAR(255) NOT NULL,
+                        password VARCHAR(255) NOT NULL
+);
